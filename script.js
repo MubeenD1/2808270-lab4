@@ -2,9 +2,13 @@
 const searchBtn = document.getElementById('search-btn');
 const countryInput = document.getElementById('country-input');
 const countryInfo = document.getElementById('country-info');
-const borderContainer = document.getElementById('border-countries');
+const borderContainer = document.getElementById('bordering-countries');
 const spinner = document.getElementById('loading-spinner');
 const errorMessage = document.getElementById('error-message');
+
+// Hide elements initially
+spinner.classList.add('hidden');
+errorMessage.classList.add('hidden');
 
 // ==========================
 // Main Search Function
