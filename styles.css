@@ -48,11 +48,17 @@
     margin-top: 15px;
 }
 
-.border-grid div {
+.border-grid li {
     background-color: #f4f4f4;
     padding: 8px;
     text-align: center;
     border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;      /* optional: removes default left indentation */
+  margin: 0;       /* optional */
 }
 
 
