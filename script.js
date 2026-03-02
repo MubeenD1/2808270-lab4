@@ -10,9 +10,7 @@ const errorMessage = document.getElementById('error-message');
 spinner.classList.add('hidden');
 errorMessage.classList.add('hidden');
 
-// ==========================
-// Main Search Function
-// ==========================
+// Search Function
 async function searchCountry(countryName) {
     if (!countryName) return;
 
@@ -35,25 +33,21 @@ async function searchCountry(countryName) {
         const data = await response.json();
         const country = data[0];
 
-        // ==========================
         // Display Country Info
-        // ==========================
         countryInfo.innerHTML = `
-            <div class="country-card">
+            <article class="country-card">
                 <h2>${country.name.common}</h2>
                 <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Region:</strong> ${country.region}</p>
                 <img src="${country.flags.svg}" alt="${country.name.common} flag" width="150">
-            </div>
+            </article>
         `;
 
-        // ==========================
         // Fetch Bordering Countries
-        // ==========================
         if (country.borders && country.borders.length > 0) {
             borderContainer.innerHTML = '<h3>Bordering Countries:</h3>';
-            const grid = document.createElement('div');
+            const grid = document.createElement('ul');
             grid.classList.add('border-grid');
 
             for (const code of country.borders) {
@@ -61,7 +55,7 @@ async function searchCountry(countryName) {
                 const borderData = await borderResponse.json();
                 const borderCountry = borderData[0];
 
-                const borderCard = document.createElement('div');
+                const borderCard = document.createElement('li');
                 borderCard.innerHTML = `
                     <p>${borderCountry.name.common}</p>
                     <img src="${borderCountry.flags.svg}" alt="${borderCountry.name.common} flag" width="80">
@@ -84,9 +78,7 @@ async function searchCountry(countryName) {
     }
 }
 
-// ==========================
 // Event Listeners
-// ==========================
 
 // Click button
 searchBtn.addEventListener('click', () => {
